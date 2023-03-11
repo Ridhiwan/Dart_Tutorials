@@ -20,11 +20,11 @@ class Fibonacci {
         for (int i = 0; i <= (len - 3); i++) {
           int next = Fibo[i] + Fibo[i + 1];
           Fibo.add(next);
-        }
+        } print(Fibo);
       } else {
-        print("You have entered an Invalid number");
+        print("You have entered zero or a negative integer i.e 0,-1");
       }
-      print(Fibo);
+
     } catch(ex){
       print("Try entering a real positive integer i.e 3,4,5");
     }
