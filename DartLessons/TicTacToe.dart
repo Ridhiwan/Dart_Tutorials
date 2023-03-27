@@ -59,14 +59,22 @@ void checkWinner(List list, String player1, String player2) {
     if (ListEquality().equals(w, win_x)) {
       if (player1 == 'X') {
         print('Congratulations!, player 1 WINS !!!!');
+        displayWinner(cplay);
+        exit(0);
       } else if (player2 == 'X') {
         print('Congratulations!, player 2 WINS !!!!');
+        displayWinner(cplay);
+        exit(0);
       }
     } else if (ListEquality().equals(w, win_o)) {
       if (player1 == 'O') {
         print('Congratulations!, player 1 WINS !!!!');
+        displayWinner(cplay);
+        exit(0);
       } else if (player2 == 'O') {
         print('Congratulations!, player 2 WINS !!!!');
+        displayWinner(cplay);
+        exit(0);
       }
     }
   }
@@ -80,6 +88,20 @@ List newList(List list,{var index = 0, var play = 'X'}){
 
 // The default parameter must be constant so we use const
 void displayDashboard({List list = const [0,1,2,3,4,5,6,7,8]}) {
+  var ind = list;
+  //List ind = ['x', 'o', 'x', 'o', 'o', 'x', 'x', 'x', 'o'];
+  print('_________');
+  for (var i = 0; i < 3; i++) {
+    print('${ind[3 * i]} | ${ind[(3 * i) + 1]} | ${ind[(3 * i) + 2]}');
+    if (i < 2) {
+      print('__*___*__');
+    } else {
+      print('_________');
+    }
+  }
+}
+// This functions takes a list and displays the winner
+void displayWinner(List list) {
   var ind = list;
   //List ind = ['x', 'o', 'x', 'o', 'o', 'x', 'x', 'x', 'o'];
   print('_________');
@@ -131,12 +153,12 @@ void main(){
     checkWinner(ind, player1, player2);
     if (i == 4) {
       print("It is a DRAW!!!");
+      displayWinner(ind);
       break;
     } else {
       var position2 = position();
       played.add(position2);
       ind = newList(ind, index: position2, play: player2);
-      print(ind);
       // Check if there is a winner
       checkWinner(ind, player1, player2);
     }
